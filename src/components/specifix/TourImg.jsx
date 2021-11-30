@@ -1,21 +1,22 @@
 /* eslint-disable react/style-prop-object */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
+import { imgs } from '../../ultis/randomImg';
 
-export const TourImg = () => {
+export const TourImg = ({title}) => {
     return (
         <div className="tour-img container">
             <div className="head">
-                <h1 className="heading">TOUR CHỤP ẢNH: ĐỒI CHÈ SƠN LA</h1>
+                <h1 className="heading">{title}</h1>
                 <button className="book-tour">Đặt ngay</button>
             </div>
             <div className="sub-head">
                 <div className="tour-rating">
                     <div className="rating">
                         <span><i className="fas fa-star" /></span>
-                        <span className="value">5.0</span>
-                        <span className="rating-quality">(500 đánh giá)</span>
-                    </div>
+                        <span className="value">{Math.floor(Math.random() * 2)+4}.0</span>
+                        <span className="rating-quality">({Math.floor(Math.random() * 156) + 1} đánh giá)</span>
+                    </div> 
                     <div className="is-liked">Yêu thích</div>
                 </div>
                 <a href="#" className="advise-contact">Liên hệ tư vấn</a>
@@ -23,7 +24,7 @@ export const TourImg = () => {
             <div className="img-item discount-zone container">
                 <div className="row">
                     <div className="col-6">
-                        <div className="full-height" style={{ backgroundImage: 'url(/assets/images/specific-tour/content1.png)' }}>
+                        <div className="full-height" style={{ backgroundImage: `url(${imgs[Number(Math.floor(Math.random() * 10))]})` }}>
                             <div className="see-more-img">
                                 <span className="see-more-icon">
                                     <svg width={14} height={15} viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -42,20 +43,20 @@ export const TourImg = () => {
                     <div className="col-3">
                         <div className="row">
                             <div className="col-12">
-                                <div className="half-height" style={{ backgroundImage: 'url(/assets/images/specific-tour/content2.jpg)' }} />
+                                <div className="half-height" style={{ backgroundImage: `url(${imgs[Number(Math.floor(Math.random() * 10))]})` }} />
                             </div>
                             <div className="col-12">
-                                <div className="half-height" style={{ backgroundImage: 'url(/assets/images/specific-tour/content3.jpg)' }} />
+                                <div className="half-height" style={{ backgroundImage: `url(${imgs[Number(Math.floor(Math.random() * 10))]})` }} />
                             </div>
                         </div>
                     </div>
                     <div className="col-3">
                         <div className="row">
                             <div className="col-12">
-                                <div className="half-height" style={{ backgroundImage: 'url(/assets/images/specific-tour/content4.jpg)' }} />
+                                <div className="half-height" style={{ backgroundImage: `url(${imgs[Number(Math.floor(Math.random() * 10))]})` }} />
                             </div>
                             <div className="col-12">
-                                <div className="half-height" style={{ backgroundImage: 'url(/assets/images/specific-tour/content5.jpg)' }} />
+                                <div className="half-height" style={{ backgroundImage: `url(${imgs[Number(Math.floor(Math.random() * 10))]})` }} />
                             </div>
                         </div>
                     </div>

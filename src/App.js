@@ -1,29 +1,43 @@
 import {
-  BrowserRouter,
+  BrowserRouter as Router,
   Routes,
-  Route
+  Route,
+   Switch
 } from 'react-router-dom';
+import history from './history';
 import Home from './pages/Home';
-import Landing from './pages/Landing';
 import './App.css'
 import BookingStep2 from './pages/BookingStep2';
 import TourLisst from './pages/TourLisst';
 import Specific from './pages/Specific';
 import BookingStep1 from './pages/BookingStep1';
+import LogIn from './pages/LogIn';
+import SignUp from './pages/SignUp';
+import UserFile from './pages/UserFile';
+import FavTour from './pages/FavTour';
+import BookedTour from './pages/BookedTour';
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        {/* <Route path="/landing" element={<Landing />} /> */}
+    <Router history={history}>
+      <Switch>
+        <Route path="/" exact component={Home} />
+        <Route path="/bookingStep2" component={BookingStep2} />
+        <Route path="/bookingStep1" component={BookingStep1} />
+        {/* <Route path="/tourlist" component={TourLisst} />  */}
+        <Route path="/tourlist/:slug/:id" component={TourLisst} /> 
+        <Route path="/tourlist/:slug" component={TourLisst} /> 
 
-        <Route path="/bookingStep2" element={<BookingStep2 />} />
-        <Route path="/bookingStep1" element={<BookingStep1 />} />
-        <Route path="/tourlist" element={<TourLisst />} /> 
-        <Route path="/specific" element={<Specific />} /> 
+        <Route path="/specific/:id" component={Specific} /> 
 
-      </Routes>
-    </BrowserRouter>
+        <Route path="/login" component={LogIn} /> 
+        <Route path="/signup" component={SignUp} /> 
+        <Route path="/userfile" component={UserFile} /> 
+        <Route path="/favtour" component={FavTour} /> 
+        <Route path="/booked" component={BookedTour} /> 
+
+
+      </Switch>
+    </Router>
   );
 }
 

@@ -1,32 +1,29 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React from 'react';
+import { convetVND } from '../../ultis/format';
 
-export const TourInfo = () => {
+export const TourInfo = ({tour}) => {
     return (
+        tour?
         <div className="tour-info container">
             <div className="row">
                 <div className="col-6">
                     <div className="tour-about">
-                        <h3 className="title">Về đồi chè Trái Tim</h3>
-                        <p>Đồi chè Trái Tim mộc châu thuộc khu nông trường chè Đài Loan, đồi chè này nằm cách trung tâm Mộc
-                            Châu khoảng 10km, đồi chè rất rộng lớn, trong đồi chè các nhân viên của nông trường trồng 1 khóm
-                            chè thành hình trái tim, thu hút sự quan tâm của du khách.
-                            <br />
-                            <br />
-                            Chỉ là những đồi chè như bao đồi chè khác như đồi chè ở Mộc Châu lại có một sức hút mà không
-                            phải nơi nào cũng có được. Đồi chè không hẳn là vẻ đẹp của tạo hóa mà còn chính ở sự chắt chiu,
-                            chăm bón của những người làm vườn. Nếu đi đồi chè vào khoảng độ từ tháng 3, tháng 4 bạn sẽ cảm
-                            nhận được một vẻ đẹp tràn đầy sức sống, của chồi non xanh mơn mởn.
-                        </p>
+                        <h3 className="title">{tour.tour_title}</h3>
+                        {
+                            tour.tour_desc
+                        }
                     </div>
                 </div>
                 <div className="col-6">
                     <div className="tour-detail">
-                        <h2 className="tour-cost">10.000.000 vnd / người</h2>
+                        <h2 className="tour-cost">{convetVND(tour.adult_price)} vnd / người lớn</h2>
+                        <h2 className="tour-cost">{convetVND(tour.kid_price)} vnd / trẻ em</h2>
+
                         <div className="rating">
                             <span><i className="fas fa-star" /></span>
-                            <span className="value">5.0</span>
-                            <span className="rating-quality">(500 đánh giá)</span>
+                            <span className="value">{Math.floor(Math.random() * 2)+4}.0</span>
+                            <span className="rating-quality">({Math.floor(Math.random() * 156) + 1} đánh giá)</span>
                         </div>
                         <div className="detail-board">
                             <div className="row">
@@ -54,7 +51,7 @@ export const TourInfo = () => {
                                         </span>
                                         <div className="item-info">
                                             <p>Ngày khởi hành</p>
-                                            <span>23/09/2021</span>
+                                            <span>{tour.start_date}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -82,7 +79,7 @@ export const TourInfo = () => {
                                         </span>
                                         <div className="item-info">
                                             <p>Ngày về</p>
-                                            <span>25/09/2021</span>
+                                            <span>{tour.end_date}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -93,7 +90,7 @@ export const TourInfo = () => {
                                         </span>
                                         <div className="item-info">
                                             <p>Mã tour</p>
-                                            <span>71234</span>
+                                            <span>{tour.tour_id}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -104,7 +101,7 @@ export const TourInfo = () => {
                                         </span>
                                         <div className="item-info">
                                             <p>Phương tiện</p>
-                                            <span>Đường bộ</span>
+                                            <span>{tour.transport}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -115,7 +112,7 @@ export const TourInfo = () => {
                                         </span>
                                         <div className="item-info">
                                             <p>Số chỗ còn lại</p>
-                                            <span>30</span>
+                                            <span>{tour.seat}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -126,7 +123,7 @@ export const TourInfo = () => {
                                         </span>
                                         <div className="item-info">
                                             <p>Nơi khởi hành</p>
-                                            <span>TP.Hà Nội</span>
+                                            <span>{tour.departure_place}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -135,7 +132,8 @@ export const TourInfo = () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </div>:
+        null
 
     );
 };

@@ -1,24 +1,29 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React from 'react';
-
-export const Tour1 = () => {
+import { Link } from 'react-router-dom';
+import { convetVND } from '../../ultis/format';
+import { imgs } from '../../ultis/randomImg';
+export const Tour1 = ({ tour }) => {
     return (
         <div className="item">
-            <div className="category-img" style={{ backgroundImage: 'url(/assets/images/landing/paris.jpg)' }} />
-            <div className="category-info">
-                <img src="./assets/images/landing/icon6.png" />
-                <div className="location">Pháp</div>
-                <div className="cost-info">2N / 1Đ</div>
-            </div>
-            <div className="category-title">
-                <p>Tour Chụp ảnh: Paris mộng mơ</p>
-            </div>
-            <div className="rating">
-                <span><i className="fas fa-star" /></span>
-                <span className="value">5.0</span>
-                <span className="rating-quality">(155 ratings)</span>
-            </div>
-            <span className="cost">13,990,000 đ</span>
+            <Link to={"/specific/" + tour.tour_id}>
+                <div className="category-img" style={{ backgroundImage: `url(${imgs[Number(Math.floor(Math.random() * 10))]})` }} />
+                <div className="category-info">
+                    <img src="./assets/images/landing/icon6.png" />
+                    <div className="location">{tour.departure_place}</div>
+                    <div className="cost-info">2N / 1Đ</div>
+                </div>
+                <div className="category-title">
+                    <p>{tour.tour_title}</p>
+                </div>
+                <div className="rating">
+                    <span><i className="fas fa-star" /></span>
+                    <span className="value">{Math.floor(Math.random() * 2)+4}.0</span>
+                    <span className="rating-quality">({Math.floor(Math.random() * 156) + 1} ratings)</span>
+                </div>
+                <span className="cost">{convetVND(tour.adult_price)}đ</span>
+            </Link>
+
         </div>
 
     );

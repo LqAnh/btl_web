@@ -1,14 +1,18 @@
 /* eslint-disable react/style-prop-object */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { imgs } from '../../ultis/randomImg';
 
-export const TourImg = ({title}) => {
+export const TourImg = ({title, id}) => {
     return (
         <div className="tour-img container">
             <div className="head">
                 <h1 className="heading">{title}</h1>
-                <button className="book-tour">Đặt ngay</button>
+                <Link to={"/bookingstep1/"+id}>
+                    <button className="book-tour">Đặt ngay</button>
+                </Link>
+                
             </div>
             <div className="sub-head">
                 <div className="tour-rating">

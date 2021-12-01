@@ -18,6 +18,7 @@ class Specific extends Component {
     
     componentDidMount() {
         service.getDetailTour( this.state.id).then((payload) => {
+            console.log(payload);
                 this.setState({
                     tour: payload,
                     bre: [ 'Chi Tiết Tour', payload.tour_title]
@@ -30,12 +31,12 @@ class Specific extends Component {
         return (
             <ClienLayout>
                 <Bre bre={this.state.bre}/>
-                <TourImg title = {this.state.tour?.tour_title}/>
+                <TourImg title = {this.state.tour?.tour_title} id={this.state.id}/>
                 <TourInfo tour={this.state.tour}/>
                 <Schedule />
                 <Rating />
                 <InfoNotice />
-                <BookingOverlay />
+                <BookingOverlay tour={this.state.tour} />
             </ClienLayout>
         )
     }

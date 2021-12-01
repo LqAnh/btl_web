@@ -18,7 +18,7 @@ export const TourWishList = ({ types }) => {
                         return (
                             <div className="col-3" key={key}>
                                 <Link to={"/tourlist/type/"+tour.type_id} className="item">
-                                    <div className="item-img" style={{ backgroundImage: `url(${imgs[Number(Math.floor(Math.random() * 10))]})` }} />
+                                    <div className="item-img" style={{ backgroundImage: `url(${imgs[Number(Math.floor(Math.random() * 20))]})` }} />
                                     <span>
                                         <h1 className="item-name">{tour.type_name}</h1>
                                         <p className="item-passengers">2 ngày, 3 đêm</p>

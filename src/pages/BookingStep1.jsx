@@ -1,11 +1,25 @@
+import { useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react/cjs/react.development';
 import { OverView } from '../components/bookingStep1';
 import { Bre, Tour3 } from '../components/common';
 import ClienLayout from '../layouts/ClienLayout';
+import { service } from '../services/service';
+import { User } from '../ultis/checkUser';
 
 const BookingStep1 = () => {
+    const params = useParams()
+    const { id } = params
+    const [tour, setTour] = useState({})
+    const user = User.getUser()
+    useEffect(() =>{
+        service.getDetailTour(id).then(payload => {
+            setTour(payload)
+        })
+    }, [id])
+
     return (
         <ClienLayout >
-            <Bre />
+            <Bre bre={["Booking","Nhập thông tin"]}/>
             <div className="step-breadcrumb breadcrumb">
                 <span className="current">
                     1. Nhập thông tin
@@ -17,8 +31,8 @@ const BookingStep1 = () => {
             </div>
 
 
-            <Tour3 />
-            <OverView />
+            <Tour3 tour={tour}/>
+            <OverView user ={user} tour={tour}/>
         </ClienLayout>
     );
 };

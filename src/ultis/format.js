@@ -1,5 +1,5 @@
 export function convetVND(n, separate = ".") {
-    var s = n.toString();
+    var s = n.toString() || '0';
     var len = s.length;
     var ret = "";
     for (var i = 1; i <= len; i++) {

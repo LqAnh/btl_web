@@ -42,38 +42,34 @@ export const service = {
     },
 
     bookTour(entity) {
-        const uri = ""
+        const uri = "/order/create"
         return client.post(uri, entity)
-    },
+    }, 
 
-    getListTour() {
-        const uri = ""
-        return client.get(uri)
-    },
 
     getDetailTour(id) {
         const uri = "/tours/tour/get/"+id
         return client.get(uri)
     },
 
-    SearchTour(search) {
-        const uri = ""
-        const params = {
-            search // thay đổi theo api
-        }
-        return client.get(uri, { params })
-    },
 
     cancelTour(id) {
-        const uri = ""
-        const params = {
-            id // thay đổi theo api
-        }
-        return client.put(uri, { params })
+        const uri = "/order/delete?id=" + id
+        return client.delete(uri)
     },
 
     getProfile() {
         const uri = "/login/profile"
         return client.get(uri)
-    }
+    },
+
+    getOrder() {
+        const uri = "/order/get-your-order"
+        return client.get(uri)
+    },
+
+    getOrderDetail(id) {
+        const uri = "/order/get?id=" + id
+        return client.get(uri)
+    },
 }

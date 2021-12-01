@@ -1,21 +1,30 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { useState } from 'react/cjs/react.development';
+import { convetVND } from '../../ultis/format';
 
-export const BookingOverlay = () => {
+export const BookingOverlay = ({tour}) => {
+    const [check, setCheck] = useState(true)
     return (
+        check && tour &&
         <div className="booking-overlay">
             <div className="tour-info">
-                <h4>Tour du lịch: Đồi chè Sơn La</h4>
-                <p>12/11/2021 | 3 ngày 2 đêm | Xe</p>
+                <h4>Tour du lịch: {tour?.tour_title}</h4>
+                <p>{tour?.start_date} | 3 ngày 2 đêm | {tour?.transport}</p>
             </div>
             <div className="right">
                 <div className="cost">
-                    <h4>Giá 10,000,000 đ</h4>
-                    <p>(1 khách)</p>
+                    <h4>Giá người lớn: {convetVND(tour?.adult_price)} đ</h4>
+                    {/* <p>(1 khách)</p> */}
+                    <h4>Giá trẻ em: {convetVND(tour?.kid_price)} đ</h4>
+                    {/* <p>(1 khách)</p> */}
                 </div>
-                <button className="book-tour">Đặt ngay</button>
+                <Link to={"/bookingstep1/"+tour?.tour_id}>
+                    <button className="book-tour">Đặt ngay</button>
+                </Link>
             </div>
-            <span className="fas fa-times close-overlay" />
+            <span className="fas fa-times close-overlay" style={{cursor: 'pointer'}} onClick={()=>setCheck(false)}/>
         </div>
-
+       
     );
 };

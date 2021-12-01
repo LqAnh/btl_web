@@ -17,7 +17,7 @@ export const WishList = ({places}) => {
                     places.map((value, key) => {
                         return (
                             <div className="col-4" key={key}>
-                                <div className="half-height" style={{ backgroundImage: `url(${imgs[Number(Math.floor(Math.random() * 10))]})` }}>
+                                <div className="half-height" style={{ backgroundImage: `url(${imgs[Number(Math.floor(Math.random() * 20))]})` }}>
                                     <div className="discount-value">55% Off</div>
                                     <Link to={"/tourlist/place/" + value.place_id} className="destination-desc">
                                         <div>

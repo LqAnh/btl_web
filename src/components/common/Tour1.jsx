@@ -7,7 +7,7 @@ export const Tour1 = ({ tour }) => {
     return (
         <div className="item">
             <Link to={"/specific/" + tour.tour_id}>
-                <div className="category-img" style={{ backgroundImage: `url(${imgs[Number(Math.floor(Math.random() * 10))]})` }} />
+                <div className="category-img" style={{ backgroundImage: `url(${imgs[Number(Math.floor(Math.random() * 21))]})` }} />
                 <div className="category-info">
                     <img src="./assets/images/landing/icon6.png" />
                     <div className="location">{tour.departure_place}</div>

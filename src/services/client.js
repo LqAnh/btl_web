@@ -1,4 +1,5 @@
 import axios from "axios";
+import { User } from "../ultis/checkUser";
 
 export const getLocalToken = () => {
     const token = window.localStorage.getItem('accessToken')
@@ -30,6 +31,7 @@ client.interceptors.request.use(config => {
 });
 
 client.interceptors.response.use(async (response) => {
+   
     return response.data
 }, error => {
     return Promise.reject(error)

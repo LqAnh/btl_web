@@ -23,7 +23,9 @@ const LogIn = () => {
             await setToken(payload.access_token)
             await service.getProfile().then((user)=> {
                 User.setUser(user)
-                return history.push('/')
+                // return history.push('/')
+                return history.goBack()
+
             })
         })
     }

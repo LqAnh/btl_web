@@ -16,13 +16,16 @@ import SignUp from './pages/SignUp';
 import UserFile from './pages/UserFile';
 import FavTour from './pages/FavTour';
 import BookedTour from './pages/BookedTour';
+import Contract from './pages/Contract';
 function App() {
   return (
     <Router history={history}>
       <Switch>
         <Route path="/" exact component={Home} />
         <Route path="/bookingStep2" component={BookingStep2} />
-        <Route path="/bookingStep1" component={BookingStep1} />
+        <Route path="/bookingStep1/:id" component={BookingStep1} />
+        <Route path="/contract/:id" component={Contract} />
+
         {/* <Route path="/tourlist" component={TourLisst} />  */}
         <Route path="/tourlist/:slug/:id" component={TourLisst} /> 
         <Route path="/tourlist/:slug" component={TourLisst} /> 

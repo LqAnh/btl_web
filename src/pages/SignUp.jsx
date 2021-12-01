@@ -39,9 +39,17 @@ const SignUp = () => {
         if (password !== confimPassword) {
             return alert('password is wrong!')
         }
+        if (username === ''||nationality === ''||phone === ''||address === ''||city === ''||email === ''||password === ''||confimPassword === '') {
+            return alert('input is not empty!')
+        }
+        if (email.indexOf('@')<0) {
+            return alert('Email invalidate')
+        }
         service.register(data).then(()=>{
             alert('đăng ký thành công')
-            return window.location.href = "http://localhost:3000/login"
+            return history.push('/login')
+        }).catch((er)=>{
+            return alert('user already exists')
         })
     }
     return (
@@ -61,9 +69,9 @@ const SignUp = () => {
                         </div>
                         <div className="input-wrapper">
                             <div className="item">
-                                <div className="input-name">Họ tên</div>
+                                <div className="input-name">Tên đăng nhập</div>
                                 <div>
-                                    <input onChange={(event) => setUsername(event.target.value)} type="text" placeholder="Họ tên" />
+                                    <input onChange={(event) => setUsername(event.target.value)} type="text" placeholder="Tên đăng nhập" />
                                 </div>
                             </div>
                             <div className="item">

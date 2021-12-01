@@ -5,23 +5,29 @@ import ClienLayout from '../layouts/ClienLayout';
 import { service } from '../services/service';
 
 const Home = () => {
+    const [tours, setTours] = useState([])
     const [types, setTypes] = useState([])
     const [places, setPlaces] = useState([])
     
     useEffect(() => {
-        service.getType().then(data => {
-            setTypes(data)
+        Promise.all([
+            service.getAllTour(),
+            service.getType(),
+            service.getPlace()
+        ]).then((data) => {
+            console.log(data);
+            setTours(data[0])
+            setTypes(data[1])
+            setPlaces(data[2])
         })
-        service.getPlace().then((data) => {
-            setPlaces(data)
-        })
+
     },[])
     return (
         <ClienLayout>
             <BannerHero />
             <WishList places={places} />
             <TourWishList types={types}  />
-            <Discover />
+            <Discover tours={tours} places={places} types={types}/>
 
             <UniquePoint />
         </ClienLayout>

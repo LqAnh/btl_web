@@ -1,10 +1,8 @@
 import {
   BrowserRouter as Router,
-  Routes,
   Route,
-   Switch
+  Switch
 } from 'react-router-dom';
-import history from './history';
 import Home from './pages/Home';
 import './App.css'
 import BookingStep2 from './pages/BookingStep2';
@@ -19,7 +17,7 @@ import BookedTour from './pages/BookedTour';
 import Contract from './pages/Contract';
 function App() {
   return (
-    <Router history={history}>
+    <Router>
       <Switch>
         <Route path="/" exact component={Home} />
         <Route path="/bookingStep2" component={BookingStep2} />

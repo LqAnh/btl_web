@@ -26,7 +26,7 @@ const Home = () => {
         <ClienLayout>
             <BannerHero />
             <WishList places={places} />
-            <TourWishList types={types}  />
+            <TourWishList typs={types}  />
             <Discover tours={tours} places={places} types={types}/>
 
             <UniquePoint />

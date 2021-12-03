@@ -4,19 +4,16 @@ import UniquePoint from '../components/common/UniquePoint';
 import ClienLayout from '../layouts/ClienLayout';
 import { service } from '../services/service';
 
-import React, { Component } from 'react';
+import React, { useEffect, useState } from 'react';
 import queryString from 'query-string';
 
 // import React from 'react';
-import { useEffect, useState } from 'react/cjs/react.development';
 import {
     useParams,
     useLocation,
     useHistory,
     useRouteMatch,
 } from 'react-router-dom';
-import { setToken } from '../services/client';
-// import { useRoutes } from 'react-router';
 
 const TourLisst = () => {
     const [tours, setTours] = useState([])

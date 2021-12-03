@@ -1,17 +1,19 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable jsx-a11y/alt-text */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import ClienLayout from '../layouts/ClienLayout';
 import { service } from '../services/service';
 import { useHistory } from "react-router-dom";
 import { setToken } from '../services/client';
 import { User } from '../ultis/checkUser';
-import { useEffect } from 'react/cjs/react.development';
 
 const LogIn = () => {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
+
+    const [viewPass, setViewPass] = useState(false)
+
     const history = useHistory()
     const user = User.getUser()
     const submit = () => {
@@ -27,6 +29,8 @@ const LogIn = () => {
                 return history.goBack()
 
             })
+        }).catch(()=>{
+            return alert('login false!')
         })
     }
     
@@ -60,8 +64,8 @@ const LogIn = () => {
                             <div className="item">
                                 <div className="input-name">Mật khẩu</div>
                                 <div>
-                                    <input type="password"  onChange={(event) => setPassword(event.target.value)}  placeholder="Mật khẩu" name="pwd" className="no-radius-right" />
-                                    <div className="display-pwd">
+                                    <input type={viewPass ? 'text' : 'password'}  onChange={(event) => setPassword(event.target.value)}  placeholder="Mật khẩu" name="pwd" className="no-radius-right" />
+                                    <div className="display-pwd" onClick={() => setViewPass(!viewPass)}>
                                         <i className="far fa-eye-slash" />
                                         {/* <i className="far fa-eye"></i> */}
                                     </div>

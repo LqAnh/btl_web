@@ -1,5 +1,4 @@
-import React from 'react';
-import { useEffect, useState } from 'react/cjs/react.development';
+import React, { useEffect, useState } from 'react';
 import { OverView } from '../components/bookingStep1';
 import { Bre, Tour3 } from '../components/common';
 import ClienLayout from '../layouts/ClienLayout';

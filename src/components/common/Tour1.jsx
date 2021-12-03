@@ -1,12 +1,11 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { convetVND } from '../../ultis/format';
 import { imgs } from '../../ultis/randomImg';
 export const Tour1 = ({ tour }) => {
     return (
         <div className="item">
-            <Link to={"/specific/" + tour.tour_id}>
+            {/* <Link to={"/specific/" + tour.tour_id}> */}
                 <div className="category-img" style={{ backgroundImage: `url(${imgs[Number(Math.floor(Math.random() * 21))]})` }} />
                 <div className="category-info">
                     <img src="./assets/images/landing/icon6.png" />
@@ -22,7 +21,7 @@ export const Tour1 = ({ tour }) => {
                     <span className="rating-quality">({Math.floor(Math.random() * 156) + 1} ratings)</span>
                 </div>
                 <span className="cost">{convetVND(tour.adult_price)}đ</span>
-            </Link>
+            {/* </Link> */}
 
         </div>
 

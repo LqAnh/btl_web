@@ -12,18 +12,26 @@ class Specific extends Component {
         this.state = {
             id: this.props.match.params.id,
             tour: null,
-            bre: []
+            bre: [],
+            routes: []
         }
     }
     
     componentDidMount() {
-        service.getDetailTour( this.state.id).then((payload) => {
+        Promise.all([
+            service.getDetailTour(this.state.id),
+            service.getRoute(this.state.id)
+        ]).then((payload)=>{
             console.log(payload);
-                this.setState({
-                    tour: payload,
-                    bre: [ 'Chi Tiết Tour', payload.tour_title]
-                });
+            this.setState({
+                tour: payload[0],
+                bre: [ 'Chi Tiết Tour', payload[0].tour_title],
+                routes: payload[1]
+            });
+        }).catch(er=>{
+            return alert('server error')
         })
+
     }
     
     render() {
@@ -33,7 +41,7 @@ class Specific extends Component {
                 <Bre bre={this.state.bre}/>
                 <TourImg title = {this.state.tour?.tour_title} id={this.state.id}/>
                 <TourInfo tour={this.state.tour}/>
-                <Schedule />
+                <Schedule routes={this.state.routes}/>
                 <Rating />
                 <InfoNotice />
                 <BookingOverlay tour={this.state.tour} />

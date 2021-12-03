@@ -4,7 +4,8 @@ import { Link } from 'react-router-dom';
 import { convetVND } from '../../ultis/format';
 import { imgs } from '../../ultis/randomImg';
 
-export const TourWishList = ({ types }) => {
+export const TourWishList = ({ typs = [] }) => { 
+    console.log('typs', typs);
     return (
         <div className="discover-pot container wide3">
             <h1 className="heading">
@@ -13,8 +14,8 @@ export const TourWishList = ({ types }) => {
                 <span><i className="fas fa-arrow-right" /></span>
             </h1>
             <div className="row">
-                {
-                    types.map((tour, key) => {
+                {  typs.length > 0 &&
+                    typs.map((tour, key) => {
                         return (
                             <div className="col-3" key={key}>
                                 <Link to={"/tourlist/type/"+tour.type_id} className="item">

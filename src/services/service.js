@@ -2,37 +2,37 @@ import client from "./client"
 
 export const service = {
     register(entity) {
-        const uri = "/login/signup"
+        const uri = "https://travel-website-007.herokuapp.com/login/signup"
         return client.post(uri, entity)
     },
  
     loging(entity) {
-        const uri = "/login/token-json"
+        const uri = "https://travel-website-007.herokuapp.com/login/token-json"
         return client.post(uri, entity)
     },
 
     getAllTour() {
-        const uri = "/tours/get-tours"
+        const uri = "https://travel-website-007.herokuapp.com/tours/get-tours"
         return client.get(uri)
     },
 
     getType() {
-        const uri = "/type/get-all"
+        const uri = "https://travel-website-007.herokuapp.com/type/get-all"
         return client.get(uri)
     },
     
     getTypeDetail(id) {
-        const uri = "/type/get?id="+id
+        const uri = "https://travel-website-007.herokuapp.com/type/get?id="+id
         return client.get(uri)
     },
 
     getPlace() {
-        const uri = "/place/get-all"
+        const uri = "https://travel-website-007.herokuapp.com/place/get-all"
         return client.get(uri)
     },
 
     getPlaceDetail(id) {
-        const uri = "/place/get?id="+id
+        const uri = "https://travel-website-007.herokuapp.com/place/get?id="+id
         return client.get(uri)
     },
 
@@ -42,34 +42,39 @@ export const service = {
     },
 
     bookTour(entity) {
-        const uri = "/order/create"
+        const uri = "https://travel-website-007.herokuapp.com/order/create"
         return client.post(uri, entity)
     }, 
 
 
     getDetailTour(id) {
-        const uri = "/tours/tour/get/"+id
+        const uri = "https://travel-website-007.herokuapp.com/tours/tour/get/"+id
         return client.get(uri)
     },
 
 
     cancelTour(id) {
-        const uri = "/order/delete?id=" + id
+        const uri = "https://travel-website-007.herokuapp.com/order/delete?id=" + id
         return client.delete(uri)
     },
 
     getProfile() {
-        const uri = "/login/profile"
+        const uri = "https://travel-website-007.herokuapp.com/login/profile"
         return client.get(uri)
     },
 
     getOrder() {
-        const uri = "/order/get-your-order"
+        const uri = "https://travel-website-007.herokuapp.com/order/get-your-order"
         return client.get(uri)
     },
 
     getOrderDetail(id) {
-        const uri = "/order/get?id=" + id
+        const uri = "https://travel-website-007.herokuapp.com/order/get?id=" + id
         return client.get(uri)
     },
+
+    getRoute (id) {
+        const uri = "https://travel-website-007.herokuapp.com/routes/get-by-tour-id?tour_id=" + id
+        return client.get(uri)
+    }
 }

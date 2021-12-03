@@ -1,17 +1,22 @@
 import { useParams } from 'react-router-dom';
-import { useEffect, useState } from 'react/cjs/react.development';
 import { OverView } from '../components/bookingStep1';
 import { Bre, Tour3 } from '../components/common';
 import ClienLayout from '../layouts/ClienLayout';
 import { service } from '../services/service';
 import { User } from '../ultis/checkUser';
+import { useHistory } from "react-router-dom";
+import { useEffect, useState } from 'react';
 
 const BookingStep1 = () => {
     const params = useParams()
     const { id } = params
     const [tour, setTour] = useState({})
     const user = User.getUser()
-    useEffect(() =>{
+    const history = useHistory()
+    useEffect(() =>{ 
+        if (!user) {
+            return history.push('/login')
+        }
         service.getDetailTour(id).then(payload => {
             setTour(payload)
         })

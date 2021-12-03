@@ -1,7 +1,6 @@
 /* eslint-disable jsx-a11y/alt-text */
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { useEffect, useState } from 'react/cjs/react.development';
 import { service } from '../../services/service';
 import { convetVND } from '../../ultis/format';
 import { imgs } from '../../ultis/randomImg';

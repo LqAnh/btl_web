@@ -13,7 +13,8 @@ class Specific extends Component {
             id: this.props.match.params.id,
             tour: null,
             bre: [],
-            routes: []
+            routes: [],
+            check: true
         }
     }
     
@@ -24,6 +25,7 @@ class Specific extends Component {
         ]).then((payload)=>{
             console.log(payload);
             this.setState({
+                check:false,
                 tour: payload[0],
                 bre: [ 'Chi Tiết Tour', payload[0].tour_title],
                 routes: payload[1]
@@ -37,7 +39,7 @@ class Specific extends Component {
     render() {
 
         return (
-            <ClienLayout>
+            <ClienLayout check={this.state.check}>
                 <Bre bre={this.state.bre}/>
                 <TourImg title = {this.state.tour?.tour_title} id={this.state.id}/>
                 <TourInfo tour={this.state.tour}/>

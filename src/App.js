@@ -15,6 +15,10 @@ import UserFile from './pages/UserFile';
 import FavTour from './pages/FavTour';
 import BookedTour from './pages/BookedTour';
 import Contract from './pages/Contract';
+import Success from './pages/Success';
+import SuSuccess from './pages/SuSuccess';
+import CoSuccess from './pages/CoSuccess';
+
 function App() {
   return (
     <Router>
@@ -25,16 +29,19 @@ function App() {
         <Route path="/contract/:id" component={Contract} />
 
         {/* <Route path="/tourlist" component={TourLisst} />  */}
-        <Route path="/tourlist/:slug/:id" component={TourLisst} /> 
-        <Route path="/tourlist/:slug" component={TourLisst} /> 
+        <Route path="/tourlist/:slug/:id" component={TourLisst} />
+        <Route path="/tourlist/:slug" component={TourLisst} />
 
-        <Route path="/specific/:id" component={Specific} /> 
+        <Route path="/specific/:id" component={Specific} />
 
-        <Route path="/login" component={LogIn} /> 
-        <Route path="/signup" component={SignUp} /> 
-        <Route path="/userfile" component={UserFile} /> 
-        <Route path="/favtour" component={FavTour} /> 
-        <Route path="/booked" component={BookedTour} /> 
+        <Route path="/login" component={LogIn} />
+        <Route path="/signup" component={SignUp} />
+        <Route path="/userfile" component={UserFile} />
+        <Route path="/favtour" component={FavTour} />
+        <Route path="/booked" component={BookedTour} />
+        <Route path="/success" component={Success} />
+        <Route path="/susuccess" component={SuSuccess} />
+        <Route path="/cosuccess" component={CoSuccess} />
 
 
       </Switch>

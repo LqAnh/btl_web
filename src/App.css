@@ -25,7 +25,9 @@ a {
 /*------------------landing page------------------*/
 /*--------Header--------*/
 .header-wrapper {
-  border-bottom: 1px solid rgba(198, 198, 195, 0.7);
+  /* border-bottom: 1px solid rgba(198, 198, 195, 0.7); */
+  margin-bottom: 10px;
+  
 }
 
 .header {
@@ -46,8 +48,8 @@ a {
 }
 
 .header-wrapper {
-  padding-bottom: 64px;
-  margin-bottom: 20px;
+  padding-bottom: 4px;
+  margin-bottom: 2px;
 }
 
 .header .nav {
@@ -91,12 +93,14 @@ a {
 
 .logo {
   position: relative;
+  margin-left: 11px;
 }
 
 .logo-img {
   position: absolute;
-  width: 164.33px;
+  width: 150px;
   height: 58px;
+  
 }
 
 .logo-text {
@@ -206,7 +210,7 @@ a {
   align-items: center;
 }
 
-.search-tool .option > span {
+.search-tool .option>span {
   font-size: 2rem;
   margin-right: 8px;
   opacity: 0.8;
@@ -253,6 +257,7 @@ a {
 
 .discount-zone.landing {
   padding: 0 0 20px;
+  margin-top: 30px;
 }
 
 .heading {
@@ -339,7 +344,7 @@ a {
   transform: translateY(-6px);
 }
 
-.destination-desc > div {
+.destination-desc>div {
   display: flex;
   align-items: center;
 }
@@ -402,7 +407,7 @@ a {
 
 .category-img {
   padding-top: 300px;
-  border-radius: 20px;
+  border-radius: 20px 20px 0px 0px;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -465,7 +470,7 @@ a {
   width: 20px;
 }
 
-.category-info > div {
+.category-info>div {
   font-size: 1.2rem;
   font-weight: 400;
   text-transform: uppercase;
@@ -512,6 +517,7 @@ a {
   transition: all 0.2s linear;
   cursor: pointer;
   margin-bottom: 12px;
+  margin-top: 10px;
   position: relative;
   box-shadow: 4px 3px 24px 0 rgb(107, 107, 107, 0.25);
 }
@@ -661,7 +667,7 @@ a {
   margin-top: 4px;
 }
 
-.discover .item .distance > span {
+.discover .item .distance>span {
   color: #e3e3e3;
 }
 
@@ -861,7 +867,8 @@ a {
 .breadcrumb {
   font-size: 2rem;
   background-color: #fff;
-  padding: 20px 10px 24px;
+  padding-top: 20px ;
+  margin-top: 40px;
 }
 
 .breadcrumb i {
@@ -1365,9 +1372,6 @@ a {
   border: none;
 }
 
-.step-breadcrumb .current {
-  margin-right: 16px;
-}
 
 /*------tour-sumup------*/
 .tour-sumup {
@@ -1435,6 +1439,7 @@ a {
 .overview-tour .detail span {
   font-weight: 600;
 }
+
 /*------trip-overview------*/
 .trip-overview {
   margin-top: 48px;
@@ -1485,6 +1490,7 @@ a {
   border-radius: 10px;
   outline: none;
   height: 42px;
+  padding-left: 10px;
 }
 
 .passenger {
@@ -1533,7 +1539,7 @@ a {
   color: #494a2b;
 }
 
-.quantity > div:nth-child(2) {
+.quantity>div:nth-child(2) {
   margin: 0 16px;
   cursor: default;
 }
@@ -1550,7 +1556,7 @@ a {
   margin-bottom: 6px;
 }
 
-.passenger-info > span {
+.passenger-info>span {
   color: #494a2b;
   font-weight: 600;
   font-size: 1.8rem;
@@ -1569,7 +1575,7 @@ a {
   display: flex;
 }
 
-.passenger-info .room > div {
+.passenger-info .room>div {
   display: flex;
   align-items: center;
 }
@@ -1634,7 +1640,7 @@ a {
   color: #494a2b;
 }
 
-.trip-summary > span {
+.trip-summary>span {
   font-size: 1.4rem;
   font-weight: 600;
   color: #333;
@@ -1655,7 +1661,7 @@ a {
   border-radius: 10px;
 }
 
-.trip-summary .tour-name > h3 {
+.trip-summary .tour-name>h3 {
   flex-basis: 64%;
   text-align: center;
   font-size: 1.4rem;
@@ -1667,7 +1673,7 @@ a {
   margin: 24px 0;
 }
 
-.summary-form > div {
+.summary-form>div {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -1725,7 +1731,7 @@ a {
   margin-bottom: 12px;
 }
 
-.user-informed > img {
+.user-informed>img {
   margin-top: 24px;
   margin-bottom: 0;
 }
@@ -1751,7 +1757,7 @@ a {
 /*--------user-file page--------*/
 /*------user-file------*/
 .user-file {
-  /* margin: 230px 0 0 80px; */
+  margin-top:  80px;
 }
 
 .user-file .avatar-wrapper {
@@ -1939,7 +1945,62 @@ select {
   border-bottom-right-radius: 0;
 }
 
-.valid-btn > img {
+.valid-btn>img {
   width: 20px;
   margin-left: 14px;
+}
+
+.container {
+  min-width: 1170px;
+}
+
+.loading {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  right: 0;
+  background-color: #8080807d;
+  z-index: 1;
+}
+
+.textloading {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  font-size: 40px;
+  transform: translate(-50%, -50%);
+}
+
+.loader {
+  border: 6px solid #F5F4F2; 
+  border-top: 6px solid #A8A8A4;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.alert {
+  padding: 0;
+  position: relative;
+  line-height: 25px;
+  border-width: 0;
+  margin-bottom: 18px;
+  color: #fff;
+  padding: 10px;
+  font-size: 14px;
+  position: fixed;
+    top: 5%;
+    right: 5%;
+    z-index: 1;
+}
+
+.alert-danger {
+  background-color: #ea3f30;
 }

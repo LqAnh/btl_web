@@ -8,6 +8,8 @@ import { User } from '../ultis/checkUser';
 import { useHistory } from "react-router-dom";
 
 const SignUp = () => {
+    const [check, setCheck] = useState(false)
+
     const [username, setUsername] = useState('')
     const [nationality, setNationality] = useState('')
     const [phone, setPhone] = useState('')
@@ -16,16 +18,23 @@ const SignUp = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [confimPassword, setConfimPassword] = useState('')
-
+    const [err, setErr] = useState([])
     const [viewPass, setViewPass] = useState(false)
     const history = useHistory()
     const user = User.getUser()
-    useEffect(()=>{
+    useEffect(() => {
         if (user) {
             return history.push('/')
         }
+        setCheck(false)
+
     }, [history, user])
+    useEffect(() => {
+        setErr(err)
+        console.log(err);
+    }, [err, setErr])
     const submit = () => {
+        setCheck(true)
         const data = {
             username,
             nationality,
@@ -37,25 +46,55 @@ const SignUp = () => {
             confimPassword
         }
         if (password !== confimPassword) {
-            return alert('password is wrong!')
+            setCheck(false)
+
+            setErr(['password is wrong!'])
+
+            return
         }
-        if (username === ''||nationality === ''||phone === ''||address === ''||city === ''||email === ''||password === ''||confimPassword === '') {
-            return alert('input is not empty!')
+        if (username === '' || nationality === '' || phone === '' || address === '' || city === '' || email === '' || password === '' || confimPassword === '') {
+            setCheck(false)
+            setErr(['input is not empty!'])
+
+            return
         }
-        if (email.indexOf('@')<0) {
-            return alert('Email invalidate')
+        if (email.indexOf('@') < 0) {
+            setCheck(false)
+            setErr(['Email invalidate'])
+            return
         }
-        service.register(data).then(()=>{
-            alert('đăng ký thành công')
-            return history.push('/login')
-        }).catch((er)=>{
+        service.register(data).then(() => {
+            setCheck(false)
+            return history.push('/susuccess')
+        }).catch((er) => {
+            setCheck(false)
             return alert('user already exists')
         })
     }
+    console.log(err);
+
+
     return (
-        <ClienLayout>
+        <ClienLayout check={check}>
+            {
+                err.map((value, key) => {
+                    return (
+                        <div className="alert alert-danger" key={key}>
+                            <div className="message">
+                                <strong>
+                                    {value}
+                                </strong>
+                            </div>
+                        </div>
+                    )
+                })
+            }
             <div>
                 <div className="padding" style={{ position: 'relative' }} />
+
+
+
+
                 <div className="sign-up-form">
                     <h4>
                         Chào mừng bạn đến với
@@ -63,8 +102,8 @@ const SignUp = () => {
                     <h3>Vitra</h3>
                     <div className="form-container">
                         <div className="button-wrapper">
-                            <Link to="/login"><div className="valid-btn active">Đăng nhập</div></Link>
-                            <Link to="/signup"><div className="valid-btn">Đăng ký</div></Link>
+                            <Link to="/login"><div className="valid-btn ">Đăng nhập</div></Link>
+                            <Link to="/signup"><div className="valid-btn active">Đăng ký</div></Link>
 
                         </div>
                         <div className="input-wrapper">
@@ -109,7 +148,7 @@ const SignUp = () => {
                                 <div>
                                     <input onChange={(event) => setPassword(event.target.value)} type={viewPass ? 'text' : 'password'} placeholder="Mật khẩu" className="no-radius-right" />
                                     <div className="display-pwd" onClick={() => setViewPass(!viewPass)}>
-                                        <i className="far fa-eye-slash"  />
+                                        <i className="far fa-eye-slash" />
                                         {/* <i className="far fa-eye"></i> */}
                                     </div>
                                 </div>
@@ -119,13 +158,13 @@ const SignUp = () => {
                                 <div>
                                     <input onChange={(event) => setConfimPassword(event.target.value)} type={viewPass ? 'text' : 'password'} placeholder="Mật khẩu" className="no-radius-right" />
                                     <div className="display-pwd" onClick={() => setViewPass(!viewPass)}>
-                                        <i className="far fa-eye-slash"  />
+                                        <i className="far fa-eye-slash" />
                                         {/* <i className="far fa-eye"></i> */}
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <button style={{border:'none'}} onClick={submit} className="valid-btn active">Đăng ký
+                        <button style={{ border: 'none' }} onClick={submit} className="valid-btn active">Đăng ký
                             <img src="./assets/images/booking-step/arrow-right-icon.png" />
                         </button>
                     </div>

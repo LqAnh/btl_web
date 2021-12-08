@@ -16,6 +16,8 @@ import {
 } from 'react-router-dom';
 
 const TourLisst = () => {
+    const [check, setCheck] = useState(true)
+
     const [tours, setTours] = useState([])
     const [alltour, setAlltour] = useState([])
     const [title, setTitle] = useState('')
@@ -29,10 +31,11 @@ const TourLisst = () => {
                 service.getAllTour(),
                 service.getTypeDetail(params.id)
             ]).then(payload => {
+                setCheck(false)
                 setTours(payload[0].filter(tour => tour.type_id === params.id))
                 setAlltour(payload[0])
                 setTitle(payload[1].type_name)
-                setBre([ 'Tour Yêu Thích', payload[1].type_name])
+                setBre(['Tour Yêu Thích', payload[1].type_name])
             })
         }
         if (params.slug === 'place') {
@@ -40,14 +43,16 @@ const TourLisst = () => {
                 service.getAllTour(),
                 service.getPlaceDetail(params.id)
             ]).then(payload => {
+                setCheck(false)
                 setTours(payload[0].filter(tour => tour.place_id === params.id))
                 setAlltour(payload[0])
-                setTitle( 'Điểm đến ' + payload[1].place_name)
+                setTitle('Điểm đến ' + payload[1].place_name)
                 setBre(['Điểm đến', payload[1].place_name])
             })
         }
         if (params.slug === 'search') {
             service.getAllTour().then((payload) => {
+                setCheck(false)
                 const data = payload.filter((tour) => {
                     let check = true
                     if (parsed.place !== '') {
@@ -67,17 +72,17 @@ const TourLisst = () => {
                 })
                 setTours(data)
                 setAlltour(payload)
-                setTitle( "Tìm Kiếm")
+                setTitle("Tìm Kiếm")
                 setBre(["Tìm kiếm"])
 
             })
         }
-    },[router.search])
+    }, [router.search])
     return (
-        <ClienLayout>
+        <ClienLayout check={check}>
             <Bre bre={bre} />
-            <BannerHero />
-            <div className="tourlist-line2" />
+            {/* <BannerHero /> */}
+            {/* <div className="tourlist-line2" /> */}
             <CategoryTour1 title={title} tours={tours} />
             {
                 tours.length === 0 ? <h1 style={{ textAlign: 'center' }}>Dữ liệu chưa cập nhật các tour này</h1> : null

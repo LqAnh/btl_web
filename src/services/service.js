@@ -5,7 +5,7 @@ export const service = {
         const uri = "https://travel-website-007.herokuapp.com/login/signup"
         return client.post(uri, entity)
     },
- 
+
     loging(entity) {
         const uri = "https://travel-website-007.herokuapp.com/login/token-json"
         return client.post(uri, entity)
@@ -20,9 +20,9 @@ export const service = {
         const uri = "https://travel-website-007.herokuapp.com/type/get-all"
         return client.get(uri)
     },
-    
+
     getTypeDetail(id) {
-        const uri = "https://travel-website-007.herokuapp.com/type/get?id="+id
+        const uri = "https://travel-website-007.herokuapp.com/type/get?id=" + id
         return client.get(uri)
     },
 
@@ -32,23 +32,23 @@ export const service = {
     },
 
     getPlaceDetail(id) {
-        const uri = "https://travel-website-007.herokuapp.com/place/get?id="+id
+        const uri = "https://travel-website-007.herokuapp.com/place/get?id=" + id
         return client.get(uri)
     },
 
     updateInfoUser(entity) {
-        const uri = ""
+        const uri = "https://travel-website-007.herokuapp.com/login/edit"
         return client.post(uri, entity)
     },
 
     bookTour(entity) {
         const uri = "https://travel-website-007.herokuapp.com/order/create"
         return client.post(uri, entity)
-    }, 
+    },
 
 
     getDetailTour(id) {
-        const uri = "https://travel-website-007.herokuapp.com/tours/tour/get/"+id
+        const uri = "https://travel-website-007.herokuapp.com/tours/tour/get/" + id
         return client.get(uri)
     },
 
@@ -64,7 +64,7 @@ export const service = {
     },
 
     getOrder() {
-        const uri = "https://travel-website-007.herokuapp.com/order/get-your-order"
+        const uri = "https://travel-website-007.herokuapp.com/order/get-all-your-unconfirmed-order"
         return client.get(uri)
     },
 
@@ -73,7 +73,7 @@ export const service = {
         return client.get(uri)
     },
 
-    getRoute (id) {
+    getRoute(id) {
         const uri = "https://travel-website-007.herokuapp.com/routes/get-by-tour-id?tour_id=" + id
         return client.get(uri)
     }

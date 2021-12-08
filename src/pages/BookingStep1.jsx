@@ -8,23 +8,25 @@ import { useHistory } from "react-router-dom";
 import { useEffect, useState } from 'react';
 
 const BookingStep1 = () => {
+    const [check, setCheck] = useState(true)
     const params = useParams()
     const { id } = params
     const [tour, setTour] = useState({})
     const user = User.getUser()
     const history = useHistory()
-    useEffect(() =>{ 
+    useEffect(() => {
         if (!user) {
             return history.push('/login')
         }
         service.getDetailTour(id).then(payload => {
+            setCheck(false)
             setTour(payload)
         })
     }, [id])
 
     return (
-        <ClienLayout >
-            <Bre bre={["Booking","Nhập thông tin"]}/>
+        <ClienLayout check={check} >
+            <Bre bre={["Booking", "Nhập thông tin"]} />
             <div className="step-breadcrumb breadcrumb">
                 <span className="current">
                     1. Nhập thông tin
@@ -36,8 +38,8 @@ const BookingStep1 = () => {
             </div>
 
 
-            <Tour3 tour={tour}/>
-            <OverView user ={user} tour={tour}/>
+            <Tour3 tour={tour} />
+            <OverView user={user} tour={tour} />
         </ClienLayout>
     );
 };

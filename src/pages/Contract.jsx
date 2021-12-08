@@ -14,14 +14,18 @@ const Contract = () => {
     const { id } = params
     const user = User.getUser()
     const history = useHistory()
+    const [check, setCheck] = useState(true)
+
     useEffect(() => {
         if (!user) {
             return history.push('/')
         }
         service.getOrderDetail(id).then(data => {
+            setCheck(false)
             console.log(data);
             setOrder(data)
             service.getDetailTour(data.tour_id).then((payload) =>{
+                setCheck(false)
                 setTour(payload)
             })
         }).catch(er => {
@@ -30,7 +34,7 @@ const Contract = () => {
         })
     },[history, id])
     return (
-        <ClienLayout >
+        <ClienLayout check={check} >
             <Bre bre={["Tour đã đặt","Hợp đồng tour"]}/>
             <h1 className="heading align-center for-contract">HỢP ĐỒNG TOUR</h1>
             {

@@ -30,7 +30,7 @@ export const Header = () => {
                             </li>
                             <li className="item">
                                 <Link to="/userfile" >
-                                    <div className="img" style={{ backgroundImage: 'url(./assets/images/landing/account-avatar.jpg)' }}>
+                                    <div className="img" style={{ backgroundImage: 'url(./assets/images/specific-tour/user-avatar.png)' }}>
                                     </div>
                                     <span>{user.user_name}</span>
                                 </Link>
@@ -44,7 +44,7 @@ export const Header = () => {
                                 <img src="./assets/images/landing/cloud.png" className="logo-img" />
                                 <img src="./assets/images/landing/vitra.png" className="logo-text" />
                             </Link>
-                            <div className="line1" />
+                            {/* <div className="line1" /> */}
                         </div>
                         <div className="header-login">
                             <Link to="/login" className="log-in">Đăng nhập</Link>

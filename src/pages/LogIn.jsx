@@ -9,19 +9,29 @@ import { setToken } from '../services/client';
 import { User } from '../ultis/checkUser';
 
 const LogIn = () => {
+    const [check, setCheck] = useState(false)
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
 
-    const [viewPass, setViewPass] = useState(false)
-
+    const [viewPass, setViewPass] = useState(true)
+    const [err, setErr] = useState([])
     const history = useHistory()
     const user = User.getUser()
     const submit = () => {
+
+        setCheck(true)
+        if (username === ''  || password === '' ) {
+            setCheck(false)
+            setErr(['input is not empty!'])
+            
+            return
+        }
         const data = {
             login_username: username,
             login_password: password
         }
         service.loging(data).then(async (payload)=>{
+            setCheck(false)
             await setToken(payload.access_token)
             await service.getProfile().then((user)=> {
                 User.setUser(user)
@@ -29,19 +39,36 @@ const LogIn = () => {
                 return history.goBack()
 
             })
+            
         }).catch(()=>{
-            return alert('login false!')
+            setCheck(false)
+            setErr(['login false!'])
+            return 
         })
     }
     
     useEffect(()=>{
+        setCheck(false)
         if (user) {
             return history.push('/')
         }
     }, [history, user])
 
     return (
-        <ClienLayout>
+        <ClienLayout check={check}>
+            {
+                    err.map((value, key) => {
+                        return (
+                            <div className="alert alert-danger" key={key}>
+                                <div className="message">
+                                    <strong>
+                                        {value}
+                                    </strong>
+                                </div>
+                            </div>
+                        ) 
+                    })
+                }
             <div>
                 <div className="padding" style={{ position: 'relative' }} />
                 <div className="sign-up-form">

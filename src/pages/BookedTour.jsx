@@ -7,6 +7,8 @@ import ClienLayout from '../layouts/ClienLayout';
 import { service } from '../services/service';
 import { User } from '../ultis/checkUser';
 const BookedTour = () => {
+    const [check, setCheck] = useState(true)
+
     const [tours, setTours] = useState([])
     const [order, setOrder] = useState([])
 
@@ -32,10 +34,12 @@ const BookedTour = () => {
             });
 
             Promise.all(get).then(payload => {
+                setCheck(false)
                 console.log(payload);
                 setBookedTour(payload)
             })
         }).catch(er => {
+            setCheck(false)
             User.logOut()
             return history.push('/login')
         })
@@ -44,7 +48,7 @@ const BookedTour = () => {
 
     }, [history, user])
     return (
-        <ClienLayout>
+        <ClienLayout check={check}>
             <Bre />
             <SearchTour className="search-tool forFavTour" />
             <div className="tourlist-line2"></div>

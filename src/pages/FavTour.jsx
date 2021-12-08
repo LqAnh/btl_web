@@ -7,13 +7,16 @@ import { service } from '../services/service';
 
 const FavTour = () => {
     const [tours, setTours] = useState([])
+    const [check, setCheck] = useState(true)
+
     useEffect(() => {
         service.getAllTour().then(data => {
+            setCheck(false)
             setTours(data)
         })
     }, [])
     return (
-        <ClienLayout>
+        <ClienLayout check={check}>
             <Bre />
             <SearchTour className="search-tool forFavTour" />
 

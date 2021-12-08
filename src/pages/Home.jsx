@@ -8,6 +8,7 @@ const Home = () => {
     const [tours, setTours] = useState([])
     const [types, setTypes] = useState([])
     const [places, setPlaces] = useState([])
+    const [check, setCheck] = useState(true)
     
     useEffect(() => {
         Promise.all([
@@ -16,6 +17,7 @@ const Home = () => {
             service.getPlace()
         ]).then((data) => {
             console.log(data);
+            setCheck(false)
             setTours(data[0])
             setTypes(data[1])
             setPlaces(data[2])
@@ -23,7 +25,7 @@ const Home = () => {
 
     },[])
     return (
-        <ClienLayout>
+        <ClienLayout check={check}>
             <BannerHero />
             <WishList places={places} />
             <TourWishList typs={types}  />

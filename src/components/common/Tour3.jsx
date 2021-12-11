@@ -7,7 +7,7 @@ export const Tour3 = ({tour= {}}) => {
         tour &&
         <div className="tour-sumup container wide2">
             {/* <Link to={"/specific/" + tour.tour_id}> */}
-                <div className="tour-img" style={{ backgroundImage: `url(${imgs[Number(Math.floor(Math.random() * 21))]})` }}>
+                <div className="tour-img" style={{ backgroundImage: `url(${tour.tour_bg_img})` }}>
                 </div>
                 <div className="overview-tour">
                     <div className="rating">

@@ -81,8 +81,8 @@ const TourLisst = () => {
     return (
         <ClienLayout check={check}>
             <Bre bre={bre} />
-            {/* <BannerHero /> */}
-            {/* <div className="tourlist-line2" /> */}
+            {/* <BannerHero />
+            <div className="tourlist-line2" /> */}
             <CategoryTour1 title={title} tours={tours} />
             {
                 tours.length === 0 ? <h1 style={{ textAlign: 'center' }}>Dữ liệu chưa cập nhật các tour này</h1> : null

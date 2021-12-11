@@ -6,6 +6,7 @@ import { User } from '../../ultis/checkUser';
 
 export const Header = () => {
     const user = User.getUser()
+    console.log("lqa", user);
     return (
         <div className="header-wrapper">
             {
@@ -16,6 +17,17 @@ export const Header = () => {
                             <img src="./assets/images/landing/vitra.png" className="logo-text" />
                         </Link>
                         <ul className="nav">
+                            {
+                                user.admin !== "false" &&
+                                <li className="item">
+                                    <Link to="/admin">
+                                        <img src="./assets/images/landing/manage_icon.png" />
+                                        <span>Quản trị</span>
+                                    </Link>
+                                </li>
+                            }
+
+
                             <li className="item">
                                 <Link to='/favtour'>
                                     <img src="./assets/images/landing/heart-icon.png" />

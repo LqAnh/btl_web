@@ -17,33 +17,35 @@ class Specific extends Component {
             check: true
         }
     }
-    
+
     componentDidMount() {
         Promise.all([
             service.getDetailTour(this.state.id),
             service.getRoute(this.state.id)
-        ]).then((payload)=>{
+        ]).then((payload) => {
             console.log(payload);
             this.setState({
-                check:false,
+                check: false,
                 tour: payload[0],
-                bre: [ 'Chi Tiết Tour', payload[0].tour_title],
-                routes: payload[1]
+                bre: ['Chi Tiết Tour', payload[0].tour_title],
+                routes: payload[1].sort(function (a, b) {
+                    return a.step_number - b.step_number;
+                })
             });
-        }).catch(er=>{
+        }).catch(er => {
             return alert('server error')
         })
 
     }
-    
+
     render() {
 
         return (
             <ClienLayout check={this.state.check}>
-                <Bre bre={this.state.bre}/>
-                <TourImg title = {this.state.tour?.tour_title} id={this.state.id}/>
-                <TourInfo tour={this.state.tour}/>
-                <Schedule routes={this.state.routes}/>
+                <Bre bre={this.state.bre} />
+                <TourImg title={this.state.tour?.tour_title} id={this.state.id} imgBg={this.state.tour?.tour_bg_img} />
+                <TourInfo tour={this.state.tour} />
+                <Schedule routes={this.state.routes} />
                 <Rating />
                 <InfoNotice />
                 <BookingOverlay tour={this.state.tour} />

@@ -1,10 +1,19 @@
 /* eslint-disable react/style-prop-object */
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { service } from '../../services/service';
 import { imgs } from '../../ultis/randomImg';
 
-export const TourImg = ({title, id}) => {
+export const TourImg = ({title, id, imgBg}) => {
+    console.log(imgBg);
+    const [img, setImg] = useState([])
+    useEffect(()=>{
+        service.getImg(id).then((data)=>{
+            setImg(data)
+            console.log(data);
+        })
+    },[id])
     return (
         <div className="tour-img container">
             <div className="head">
@@ -28,7 +37,7 @@ export const TourImg = ({title, id}) => {
             <div className="img-item discount-zone container">
                 <div className="row">
                     <div className="col-6">
-                        <div className="full-height" style={{ backgroundImage: `url(${imgs[Number(Math.floor(Math.random() * 10))]})` }}>
+                        <div className="full-height" style={{ backgroundImage: `url(${imgBg})` }}>
                             <div className="see-more-img">
                                 <span className="see-more-icon">
                                     <svg width={14} height={15} viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -47,20 +56,20 @@ export const TourImg = ({title, id}) => {
                     <div className="col-3">
                         <div className="row">
                             <div className="col-12">
-                                <div className="half-height" style={{ backgroundImage: `url(${imgs[Number(Math.floor(Math.random() * 10))]})` }} />
+                                <div className="half-height" style={{ backgroundImage: `url(${img[0]?.link})` }} />
                             </div>
                             <div className="col-12">
-                                <div className="half-height" style={{ backgroundImage: `url(${imgs[Number(Math.floor(Math.random() * 10))]})` }} />
+                                <div className="half-height" style={{ backgroundImage: `url(${img[1]?.link})` }} />
                             </div>
                         </div>
                     </div>
                     <div className="col-3">
                         <div className="row">
                             <div className="col-12">
-                                <div className="half-height" style={{ backgroundImage: `url(${imgs[Number(Math.floor(Math.random() * 10))]})` }} />
+                                <div className="half-height" style={{ backgroundImage: `url(${img[2]?.link})` }} />
                             </div>
                             <div className="col-12">
-                                <div className="half-height" style={{ backgroundImage: `url(${imgs[Number(Math.floor(Math.random() * 10))]})` }} />
+                                <div className="half-height" style={{ backgroundImage: `url(${img[3]?.link})` }} />
                             </div>
                         </div>
                     </div>

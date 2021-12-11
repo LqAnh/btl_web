@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { Bre, StepBre, UserInfo } from '../components/common';
 import ClienLayout from '../layouts/ClienLayout';
 
-const Success = () => {
+const CoSuccess = () => {
     return (
         <ClienLayout>
             {/* <Bre /> */}
@@ -24,4 +24,4 @@ const Success = () => {
     );
 };
 
-export default Success;
+export default CoSuccess;

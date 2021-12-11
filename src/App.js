@@ -16,9 +16,11 @@ import FavTour from './pages/FavTour';
 import BookedTour from './pages/BookedTour';
 import Contract from './pages/Contract';
 import Success from './pages/Success';
+import MTours from './pages/MTours';
+import AddTour from './pages/AddTour';
+import AdminConfirm from './pages/AdminConfirm';
 import SuSuccess from './pages/SuSuccess';
 import CoSuccess from './pages/CoSuccess';
-
 function App() {
   return (
     <Router>
@@ -42,6 +44,13 @@ function App() {
         <Route path="/success" component={Success} />
         <Route path="/susuccess" component={SuSuccess} />
         <Route path="/cosuccess" component={CoSuccess} />
+
+
+        <Route path="/admin/addtour" component={AddTour} />
+        <Route path="/admin/confirm" component={AdminConfirm} />
+
+        <Route path="/admin" component={MTours} />
+
 
 
       </Switch>

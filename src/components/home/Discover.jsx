@@ -22,7 +22,7 @@ export const Discover = ({tours, places, types}) => {
                                 <div className="col-3" key={key}>
                                     <Link to={"/tourlist/place/" + value.place_id}>
                                     <div className="item" style={{ color: '#B0CA5F' }}>
-                                        <div className="image" style={{ backgroundImage: `url(${imgsLanding[Number(Math.floor(Math.random() *7))]})` }} />
+                                        <div className="image" style={{ backgroundImage: `url(${value.image_link})` }} />
                                         <div className="bottom">
                                             <h4 className="name">{value.place_name}</h4>
                                             <div className="distance">
@@ -59,7 +59,7 @@ export const Discover = ({tours, places, types}) => {
                                 <div className="col-3" key={key}>
                                     <Link to={"/specific/" + value.tour_id}>
                                     <div className="item" style={{ color: '#343629' }}>
-                                        <div className="image" style={{ backgroundImage: `url(${imgsLanding[Number(Math.floor(Math.random() *7))]})` }} />
+                                        <div className="image" style={{ backgroundImage: `url(${value.tour_bg_img})` }} />
                                         <div className="bottom">
                                             <h4 className="name">{value.tour_title}</h4>
                                             <div className="distance">
@@ -96,7 +96,7 @@ export const Discover = ({tours, places, types}) => {
                                 <div className="col-3" key={key}>
                                     <Link to={"/tourlist/type/" + value.type_id}>
                                     <div className="item" style={{ color: '#37545A' }}>
-                                        <div className="image" style={{ backgroundImage: `url(${imgsLanding[Number(Math.floor(Math.random() *7))]})` }} />
+                                        <div className="image" style={{ backgroundImage: `url(${value.type_img})` }} />
                                         <div className="bottom">
                                             <h4 className="name">{value.type_name}</h4>
                                             <div className="distance">

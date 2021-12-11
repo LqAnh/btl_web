@@ -1,17 +1,18 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable jsx-a11y/alt-text */
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { service } from '../../services/service';
+import { User } from '../../ultis/checkUser';
 import { convetVND } from '../../ultis/format';
 import { imgs } from '../../ultis/randomImg';
 
-
-export const OverView = ({ user, tour, order, passChildData }) => {
+export const OverView = ({ user, tour, order, setCheck }) => {
+    console.log(setCheck);
     const [quantity1, setQuantity1] = useState(1)
     const [quantity2, setQuantity2] = useState(0)
     const [total, setTotal] = useState(0)
     const [order_detail, setOrder_detail] = useState('')
-
     const history = useHistory()
     useEffect(() => {
         if (tour.adult_price) {
@@ -30,6 +31,7 @@ export const OverView = ({ user, tour, order, passChildData }) => {
         }
     }
     const submit = () => {
+        setCheck(true)
         const date = new Date()
         const data = {
             order_date: date.getFullYear() + '-' + Number(date.getMonth() + 1) + '-' + date.getDate(),
@@ -41,13 +43,22 @@ export const OverView = ({ user, tour, order, passChildData }) => {
             kid_price: (quantity2 * Number(tour?.kid_price)).toString()
         }
         service.bookTour(data).then(payload => {
+            setCheck(false)
             console.log(payload);
             history.push('/bookingstep2')
+        }).catch(() => {
+            setCheck(false)
+            User.logOut()
         })
     }
     const cance = () => {
+        setCheck(true)
         service.cancelTour(order.order_id).then(() => {
+            setCheck(false)
             return history.push('/cosuccess')
+        }).catch(() => {
+            setCheck(false)
+            User.logOut()
         })
     }
     return (
@@ -128,7 +139,7 @@ export const OverView = ({ user, tour, order, passChildData }) => {
                             <h4>Tóm tắt chuyến đi</h4>
                             <span>Tour trọn gói</span>
                             <div className="tour-name">
-                                <div className="image" style={{ backgroundImage: `url(${imgs[1]})` }} />
+                                <div className="image" style={{ backgroundImage: `url(${tour.tour_bg_img})` }} />
                                 <h3>Tour du lịch: {tour.tour_title}</h3>
                             </div>
                             <div className="summary-form">
@@ -244,7 +255,7 @@ export const OverView = ({ user, tour, order, passChildData }) => {
                                 <h4>Tóm tắt chuyến đi</h4>
                                 <span>Tour trọn gói</span>
                                 <div className="tour-name">
-                                    <div className="image" style={{ backgroundImage: `url(${imgs[1]})` }} />
+                                    <div className="image" style={{ backgroundImage: `url(${tour.tour_bg_img})` }} />
                                     <h3>Tour du lịch: {tour.tour_title}</h3>
                                 </div>
                                 <div className="summary-form">

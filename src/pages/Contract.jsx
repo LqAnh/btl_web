@@ -41,7 +41,7 @@ const Contract = () => {
                 tour.tour_id && <Tour3 tour={tour}/>
             }
             
-            <OverView user ={user} tour={tour} order={order}/>
+            <OverView user ={user} tour={tour} order={order} setCheck={setCheck}/>
         </ClienLayout>
     );
 };

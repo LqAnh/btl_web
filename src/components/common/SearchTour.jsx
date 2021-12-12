@@ -23,7 +23,7 @@ export const SearchTour = ({ className = "search-tool" }) => {
             <div className="option">
                 <span><i className="fas fa-map-marker-alt" /></span>
                 <div className="option-text">
-                    <p>Nơi khởi hành</p>
+                    <p>Tên chuyến đi</p>
                     <input type="text" placeholder="Nhập để tìm kiếm" onChange={(event) => setPlace(event.target.value)} />
                 </div>
             </div>

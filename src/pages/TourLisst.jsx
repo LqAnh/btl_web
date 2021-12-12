@@ -56,7 +56,7 @@ const TourLisst = () => {
                 const data = payload.filter((tour) => {
                     let check = true
                     if (parsed.place !== '') {
-                        check = tour.departure_place === parsed.place ? true : false
+                        check = tour.tour_title.toLocaleLowerCase().includes(parsed.place.toLocaleLowerCase()) ? true : false
                     }
                     if (parsed.startdate !== '') {
                         check = tour.start_date === parsed.startdate ? true : false

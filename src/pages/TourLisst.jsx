@@ -43,11 +43,11 @@ const TourLisst = () => {
                 service.getAllTour(),
                 service.getPlaceDetail(params.id)
             ]).then(payload => {
-                setCheck(false)
                 setTours(payload[0].filter(tour => tour.place_id === params.id))
                 setAlltour(payload[0])
                 setTitle('Điểm đến ' + payload[1].place_name)
                 setBre(['Điểm đến', payload[1].place_name])
+                setCheck(false)
             })
         }
         if (params.slug === 'search') {

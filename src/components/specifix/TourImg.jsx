@@ -5,35 +5,55 @@ import { Link } from 'react-router-dom';
 import { service } from '../../services/service';
 import { imgs } from '../../ultis/randomImg';
 
-export const TourImg = ({title, id, imgBg}) => {
-    console.log(imgBg);
+export const TourImg = ({ title, id, imgBg }) => {
+    //console.log(imgBg);
+
     const [img, setImg] = useState([])
-    useEffect(()=>{
-        service.getImg(id).then((data)=>{
+    const [rate, setRate] = useState([])
+    const [avg, setAvg] = useState(0.0)
+
+    useEffect(() => {
+        service.getImg(id).then((data) => {
             setImg(data)
-            console.log(data);
+
         })
-    },[id])
+        service.getRatingTour(id).then((data) => {
+            setRate(data)
+            // console.log(avg)
+            let sum = 0
+            for (let i = 0; i < rate.length; i++) {
+                sum += rate[i].rating;
+                setAvg(sum / rate.length)
+            }
+        })
+    }, [id, rate])
     return (
         <div className="tour-img container">
             <div className="head">
                 <h1 className="heading">{title}</h1>
-                <Link to={"/bookingstep1/"+id}>
+                <Link to={"/bookingstep1/" + id}>
                     <button className="book-tour">Đặt ngay</button>
                 </Link>
-                
+
             </div>
-            <div className="sub-head">
-                <div className="tour-rating">
-                    <div className="rating">
-                        <span><i className="fas fa-star" /></span>
-                        <span className="value">{Math.floor(Math.random() * 2)+4}.0</span>
-                        <span className="rating-quality">({Math.floor(Math.random() * 156) + 1} đánh giá)</span>
-                    </div> 
-                    <div className="is-liked">Yêu thích</div>
-                </div>
-                <a href="#" className="advise-contact">Liên hệ tư vấn</a>
-            </div>
+
+            {
+                rate ?
+                    <div className="sub-head">
+                        <div className="tour-rating">
+                            <div className="rating">
+                                <span><i className="fas fa-star" /></span>
+                                <span className="value">{avg}.0</span>
+                                <span className="rating-quality">({rate.length} đánh giá)</span>
+                            </div>
+                            <div className="is-liked">Yêu thích</div>
+                        </div>
+                        <a href="#" className="advise-contact">Liên hệ tư vấn</a>
+                    </div>
+                    :
+                    null
+            }
+
             <div className="img-item discount-zone container">
                 <div className="row">
                     <div className="col-6">

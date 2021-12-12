@@ -4,13 +4,13 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { imgs } from '../../ultis/randomImg';
 
-export const WishList = ({places}) => {
+export const WishList = ({ places }) => {
     return (
-        <div className="discount-zone landing container wide3" style={{padding: '0 15px'}}>
+        <div className="discount-zone landing container wide3" style={{ padding: '0 15px' }}>
             <h1 className="heading">
                 <span>Các điểm đến được yêu thích</span>
-                <span><i className="fas fa-arrow-left hide" /></span>
-                <span><i className="fas fa-arrow-right" /></span>
+                {/* <span><i className="fas fa-arrow-left hide" /></span>
+                <span><i className="fas fa-arrow-right" /></span> */}
             </h1>
             <div className="row">
                 {
@@ -49,7 +49,7 @@ export const WishList = ({places}) => {
                 </div> */}
                 {/* <div className="col-12">
                     <div className="row"> */}
-                        {/* <div className="col-4">
+                {/* <div className="col-4">
                             <div className="half-height" style={{ backgroundImage: 'url(/assets/images/landing/content2.jpg)' }}>
                                 <div className="discount-value">55% Off</div>
                                 <Link to="/tourlist" className="destination-desc">
@@ -77,7 +77,7 @@ export const WishList = ({places}) => {
                                 </Link>
                             </div>
                         </div> */}
-                    {/* </div>
+                {/* </div>
                 </div> */}
                 {/* <div className="col-4">
                     <div className="row">
@@ -99,7 +99,7 @@ export const WishList = ({places}) => {
                         
                     </div>
                 </div> */}
-                
+
             </div>
         </div>
 

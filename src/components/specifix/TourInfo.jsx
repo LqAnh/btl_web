@@ -2,36 +2,36 @@
 import React from 'react';
 import { convetVND } from '../../ultis/format';
 
-export const TourInfo = ({tour}) => {
+export const TourInfo = ({ tour }) => {
     return (
-        tour?
-        <div className="tour-info container">
-            <div className="row">
-                <div className="col-6">
-                    <div className="tour-about">
-                        <h3 className="title">{tour.tour_title}</h3>
-                        {
-                            tour.tour_desc
-                        }
-                    </div>
-                </div>
-                <div className="col-6">
-                    <div className="tour-detail">
-                        <h2 className="tour-cost">{convetVND(tour.adult_price)} vnd / người lớn</h2>
-                        <h2 className="tour-cost">{convetVND(tour.kid_price)} vnd / trẻ em</h2>
-
-                        <div className="rating">
-                            <span><i className="fas fa-star" /></span>
-                            <span className="value">{Math.floor(Math.random() * 2)+4}.0</span>
-                            <span className="rating-quality">({Math.floor(Math.random() * 156) + 1} đánh giá)</span>
+        tour ?
+            <div className="tour-info container">
+                <div className="row">
+                    <div className="col-6">
+                        <div className="tour-about">
+                            <h3 className="title">{tour.tour_title}</h3>
+                            {
+                                tour.tour_desc
+                            }
                         </div>
-                        <div className="detail-board">
-                            <div className="row">
-                                <div className="col-6">
-                                    <div className="item">
-                                        <span>
-                                            <svg width={21} height={20} viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M17.0488 2H15.0488V1C15.0488 0.734784 14.9435 0.48043 14.7559 0.292893C14.5684 
+                    </div>
+                    <div className="col-6">
+                        <div className="tour-detail">
+                            <h2 className="tour-cost">{convetVND(tour.adult_price)} vnd / người lớn</h2>
+                            <h2 className="tour-cost">{convetVND(tour.kid_price)} vnd / trẻ em</h2>
+
+                            {/* <div className="rating">
+                                <span><i className="fas fa-star" /></span>
+                                <span className="value">{Math.floor(Math.random() * 2) + 4}.0</span>
+                                <span className="rating-quality">({Math.floor(Math.random() * 156) + 1} đánh giá)</span>
+                            </div> */}
+                            <div className="detail-board">
+                                <div className="row">
+                                    <div className="col-6">
+                                        <div className="item">
+                                            <span>
+                                                <svg width={21} height={20} viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M17.0488 2H15.0488V1C15.0488 0.734784 14.9435 0.48043 14.7559 0.292893C14.5684 
                                           0.105357 14.314 0 14.0488 0C13.7836 0 13.5293 0.105357 13.3417 0.292893C13.1542 
                                           0.48043 13.0488 0.734784 13.0488 1V2H7.04883V1C7.04883 0.734784 6.94347 0.48043 
                                           6.75593 0.292893C6.5684 0.105357 6.31404 0 6.04883 0C5.78361 0 5.52926 0.105357 
@@ -47,19 +47,19 @@ export const TourInfo = ({tour}) => {
                                           5.51957 7.04883 5.26522 7.04883 5V4H13.0488V5C13.0488 5.26522 13.1542 5.51957 13.3417 5.70711C13.5293 5.89464 
                                           13.7836 6 14.0488 6C14.314 6 14.5684 5.89464 14.7559 5.70711C14.9435 5.51957 15.0488 5.26522 15.0488 5V4H17.0488C17.314 
                                           4 17.5684 4.10536 17.7559 4.29289C17.9435 4.48043 18.0488 4.73478 18.0488 5V8Z" fill="#989898" />
-                                            </svg>
-                                        </span>
-                                        <div className="item-info">
-                                            <p>Ngày khởi hành</p>
-                                            <span>{tour.start_date}</span>
+                                                </svg>
+                                            </span>
+                                            <div className="item-info">
+                                                <p>Ngày khởi hành</p>
+                                                <span>{tour.start_date}</span>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div className="col-6">
-                                    <div className="item">
-                                        <span>
-                                            <svg width={21} height={20} viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M17.0488 2H15.0488V1C15.0488 0.734784 14.9435 0.48043 14.7559 0.292893C14.5684 
+                                    <div className="col-6">
+                                        <div className="item">
+                                            <span>
+                                                <svg width={21} height={20} viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M17.0488 2H15.0488V1C15.0488 0.734784 14.9435 0.48043 14.7559 0.292893C14.5684 
                                           0.105357 14.314 0 14.0488 0C13.7836 0 13.5293 0.105357 13.3417 0.292893C13.1542 
                                           0.48043 13.0488 0.734784 13.0488 1V2H7.04883V1C7.04883 0.734784 6.94347 0.48043 
                                           6.75593 0.292893C6.5684 0.105357 6.31404 0 6.04883 0C5.78361 0 5.52926 0.105357 
@@ -75,55 +75,56 @@ export const TourInfo = ({tour}) => {
                                           5.51957 7.04883 5.26522 7.04883 5V4H13.0488V5C13.0488 5.26522 13.1542 5.51957 13.3417 5.70711C13.5293 5.89464 
                                           13.7836 6 14.0488 6C14.314 6 14.5684 5.89464 14.7559 5.70711C14.9435 5.51957 15.0488 5.26522 15.0488 5V4H17.0488C17.314 
                                           4 17.5684 4.10536 17.7559 4.29289C17.9435 4.48043 18.0488 4.73478 18.0488 5V8Z" fill="#989898" />
-                                            </svg>
-                                        </span>
-                                        <div className="item-info">
-                                            <p>Ngày về</p>
-                                            <span>{tour.end_date}</span>
+                                                </svg>
+                                            </span>
+                                            <div className="item-info">
+                                                <p>Ngày về</p>
+                                                <span>{tour.end_date}</span>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div className="col-6">
-                                    <div className="item">
-                                        <span>
-                                            <img src="./assets/images/specific-tour/icon1.png" />
-                                        </span>
-                                        <div className="item-info">
-                                            <p>Mã tour</p>
-                                            <span>{tour.tour_id}</span>
+                                    <div className="col-6">
+                                        <div className="item">
+                                            <span>
+                                                <img src="./assets/images/specific-tour/icon1.png" />
+                                            </span>
+                                            <div className="item-info">
+                                                <p>Mã tour</p>
+                                                <span>{tour.tour_id}</span>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div className="col-6">
-                                    <div className="item">
-                                        <span>
-                                            <img src="./assets/images/specific-tour/icon2.png" />
-                                        </span>
-                                        <div className="item-info">
-                                            <p>Phương tiện</p>
-                                            <span>{tour.transport}</span>
+                                    <div className="col-6">
+                                        <div className="item">
+                                            <span>
+                                                <img src="./assets/images/specific-tour/icon2.png" />
+                                            </span>
+                                            <div className="item-info">
+                                                <p>Phương tiện</p>
+                                                <span>{tour.transport}</span>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div className="col-6">
-                                    <div className="item">
-                                        <span>
-                                            <img src="./assets/images/specific-tour/icon3.png" />
-                                        </span>
-                                        <div className="item-info">
-                                            <p>Số chỗ còn lại</p>
-                                            <span>{tour.seat}</span>
+                                    <div className="col-6">
+                                        <div className="item">
+                                            <span>
+                                                <img src="./assets/images/specific-tour/icon3.png" />
+                                            </span>
+                                            <div className="item-info">
+                                                <p>Số chỗ còn lại</p>
+                                                <span>{tour.seat}</span>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div className="col-6">
-                                    <div className="item">
-                                        <span>
-                                            <img src="./assets/images/specific-tour/icon4.png" />
-                                        </span>
-                                        <div className="item-info">
-                                            <p>Nơi khởi hành</p>
-                                            <span>{tour.departure_place}</span>
+                                    <div className="col-6">
+                                        <div className="item">
+                                            <span>
+                                                <img src="./assets/images/specific-tour/icon4.png" />
+                                            </span>
+                                            <div className="item-info">
+                                                <p>Nơi khởi hành</p>
+                                                <span>{tour.departure_place}</span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -131,9 +132,8 @@ export const TourInfo = ({tour}) => {
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>:
-        null
+            </div> :
+            null
 
     );
 };

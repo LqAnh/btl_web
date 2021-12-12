@@ -14,6 +14,7 @@ class Specific extends Component {
             tour: null,
             bre: [],
             routes: [],
+            rate: null,
             check: true
         }
     }
@@ -21,16 +22,18 @@ class Specific extends Component {
     componentDidMount() {
         Promise.all([
             service.getDetailTour(this.state.id),
-            service.getRoute(this.state.id)
+            service.getRoute(this.state.id),
+            service.getRatingTour(this.state.id)
         ]).then((payload) => {
-            console.log(payload);
+            //console.log("rating", payload[2]);
             this.setState({
                 check: false,
                 tour: payload[0],
                 bre: ['Chi Tiết Tour', payload[0].tour_title],
                 routes: payload[1].sort(function (a, b) {
                     return a.step_number - b.step_number;
-                })
+                }),
+                rate: payload[2]
             });
         }).catch(er => {
             return alert('server error')
@@ -43,10 +46,10 @@ class Specific extends Component {
         return (
             <ClienLayout check={this.state.check}>
                 <Bre bre={this.state.bre} />
-                <TourImg title={this.state.tour?.tour_title} id={this.state.id} imgBg={this.state.tour?.tour_bg_img} />
+                <TourImg title={this.state.tour?.tour_title} id={this.state.id} imgBg={this.state.tour?.tour_bg_img} rate={this.state.rate} />
                 <TourInfo tour={this.state.tour} />
                 <Schedule routes={this.state.routes} />
-                <Rating />
+                <Rating rate={this.state.rate} />
                 <InfoNotice />
                 <BookingOverlay tour={this.state.tour} />
             </ClienLayout>

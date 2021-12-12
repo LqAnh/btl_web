@@ -274,8 +274,8 @@ const AddTour = () => {
                         <div className="advance-search" style={{ float: 'right' }} onClick={submit}>Hoàn tất</div>
                     </div>
                 </div>
-                <AddImg imgs={imgs} setImgs={setImgs} />
             </div>
+            <AddImg imgs={imgs} setImgs={setImgs} />
 
         </AdminLayout>
     );

@@ -5,7 +5,7 @@ export const service = {
         const uri = "https://travel-website-007.herokuapp.com/login/signup"
         return client.post(uri, entity)
     },
- 
+
     loging(entity) {
         const uri = "https://travel-website-007.herokuapp.com/login/token-json"
         return client.post(uri, entity)
@@ -20,9 +20,9 @@ export const service = {
         const uri = "https://travel-website-007.herokuapp.com/type/get-all"
         return client.get(uri)
     },
-    
+
     getTypeDetail(id) {
-        const uri = "https://travel-website-007.herokuapp.com/type/get?id="+id
+        const uri = "https://travel-website-007.herokuapp.com/type/get?id=" + id
         return client.get(uri)
     },
 
@@ -32,7 +32,7 @@ export const service = {
     },
 
     getPlaceDetail(id) {
-        const uri = "https://travel-website-007.herokuapp.com/place/get?id="+id
+        const uri = "https://travel-website-007.herokuapp.com/place/get?id=" + id
         return client.get(uri)
     },
 
@@ -44,11 +44,16 @@ export const service = {
     bookTour(entity) {
         const uri = "https://travel-website-007.herokuapp.com/order/create"
         return client.post(uri, entity)
-    }, 
+    },
 
 
     getDetailTour(id) {
-        const uri = "https://travel-website-007.herokuapp.com/tours/tour/get/"+id
+        const uri = "https://travel-website-007.herokuapp.com/tours/tour/get/" + id
+        return client.get(uri)
+    },
+
+    getRatingTour(id) {
+        const uri = "https://travel-website-007.herokuapp.com/comments/get-comments/" + id
         return client.get(uri)
     },
 
@@ -73,17 +78,17 @@ export const service = {
         return client.get(uri)
     },
 
-    getUnconfimOrder(){
+    getUnconfimOrder() {
         const uri = "https://travel-website-007.herokuapp.com/order/get-all-your-unconfirmed-order"
         return client.get(uri)
     },
 
-    getRoute (id) {
+    getRoute(id) {
         const uri = "https://travel-website-007.herokuapp.com/routes/get-by-tour-id?tour_id=" + id
         return client.get(uri)
     },
 
-    getImg (id) {
+    getImg(id) {
         const uri = "https://travel-website-007.herokuapp.com/image/get?tour_id=" + id
         return client.get(uri)
     },
@@ -119,12 +124,12 @@ export const service = {
     },
 
     adminCreateTour(entity) {
-        const uri = "https://travel-website-007.herokuapp.com/tours/create" 
+        const uri = "https://travel-website-007.herokuapp.com/tours/create"
         return client.post(uri, entity)
     },
 
     adminCreateImg(id, entity) {
-        const uri = "https://travel-website-007.herokuapp.com/image/create" 
+        const uri = "https://travel-website-007.herokuapp.com/image/create"
         const data = {
             ...entity,
             tour_id: id
@@ -137,7 +142,7 @@ export const service = {
             ...entity,
             tour_id: id
         }
-        const uri = "https://travel-website-007.herokuapp.com/routes/create" 
-        return client.post(uri, data) 
+        const uri = "https://travel-website-007.herokuapp.com/routes/create"
+        return client.post(uri, data)
     },
 }

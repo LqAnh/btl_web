@@ -7,9 +7,11 @@ import { service } from '../services/service';
 const Home = () => {
     const [tours, setTours] = useState([])
     const [types, setTypes] = useState([])
-    const [places, setPlaces] = useState([])
+    const [placesShort, setPlacesShort] = useState([])
+    const [placesLong, setPlacesLong] = useState([])
     const [check, setCheck] = useState(true)
-    
+    var dataPlaceRemove = []
+
     useEffect(() => {
         Promise.all([
             service.getAllTour(),
@@ -18,18 +20,20 @@ const Home = () => {
         ]).then((data) => {
             console.log(data);
             setCheck(false)
+            setPlacesLong(data[2].splice(6))
             setTours(data[0])
             setTypes(data[1])
-            setPlaces(data[2])
+            dataPlaceRemove = data[2].splice(6);
+            setPlacesShort(data[2])
         })
 
-    },[])
+    }, [])
     return (
         <ClienLayout check={check}>
             <BannerHero />
-            <WishList places={places} />
-            <TourWishList typs={types}  />
-            <Discover tours={tours} places={places} types={types}/>
+            <WishList places={placesShort} />
+            <TourWishList typs={types} />
+            <Discover tours={tours} places={placesLong} types={types} />
 
             <UniquePoint />
         </ClienLayout>

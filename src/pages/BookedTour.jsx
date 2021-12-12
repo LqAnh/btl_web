@@ -66,7 +66,7 @@ const BookedTour = () => {
             <div className="tourlist-line2"></div>
             <div>
                 <div className="tour-sumoup-wrapper container">
-                    <h1 className="heading align-center for-contract">Tour đã đặt</h1>
+                    <h1 className="heading align-center for-contract">Tour đã xác nhận</h1>
                     {
                         tours.map((tour, key) => {
                             let check = false

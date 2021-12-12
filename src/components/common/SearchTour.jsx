@@ -30,7 +30,7 @@ export const SearchTour = ({ className = "search-tool" }) => {
             <div className="option">
                 <span><i className="fas fa-calendar" /></span>
                 <div className="option-text">
-                    <p>Ngày đến</p>
+                    <p>Ngày đi</p>
                     <input type="date" placeholder="Chọn ngày" onChange={(event) => setStartDate(event.target.value)} />
                 </div>
             </div>

@@ -2242,6 +2242,10 @@ td, tr {
   border-radius: 10px;
 }
 
+.advanced-search-box .tour-start-wrapper {
+  margin-left: 15px;
+}
+
 .advanced-search-box .advance-search {
   float: right;
   margin-right: 16px;

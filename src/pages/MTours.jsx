@@ -54,7 +54,7 @@ const MTours = () => {
     const search1 = () => {
         setCheck(true)
         service.adminGetAllTour().then((data) => {
-            const x = data.filter(item => item.tour_title === searchTitle)
+            const x = data.filter(item => item.tour_title.toLowerCase().includes(searchTitle.toLowerCase()))
             setTours(x)
             setCheck(false)
         })
@@ -101,7 +101,7 @@ const MTours = () => {
     }
 
 
-    
+
     return (
         <AdminLayout check={check}>
             <SiderBar />
@@ -116,7 +116,7 @@ const MTours = () => {
                         <i className="fas fa-search" />
                     </div>
                     <div className="advance-search" onClick={() => setHiden(!hiden)}>Tìm kiếm nâng cao</div>
-                    <div className="advance-search" onClick={()=>handlerSkip(0)} style={{marginLeft:'20px'}}>Tất cả</div>
+                    <div className="advance-search" onClick={() => handlerSkip(0)} style={{ marginLeft: '20px' }}>Tất cả</div>
 
                 </div>
                 <div className={hiden ? "advanced-search-box hide" : "advanced-search-box"}>
@@ -188,7 +188,7 @@ const MTours = () => {
                             <th>Giá người lớn</th>
                             <th>Giá trẻ em</th>
                             <th>Nơi xuất phát</th>
-                            <th>Nơi xuất phát</th>
+                            <th>Xóa tour</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -220,8 +220,8 @@ const MTours = () => {
                                         <td>{tour.kid_price}</td>
                                         <td>{tour.departure_place}</td>
                                         <td className="td-icon">
-                                            <div style={{ cursor: 'pointer' }}><img src="./assets/images/landing/check-list_icon.png" alt /></div>
-                                            <div style={{ cursor: 'pointer' }}><img src="./assets/images/landing/check-list_icon2.png" alt /></div>
+                                            {/* <div style={{ cursor: 'pointer' }}><img src="./assets/images/landing/check-list_icon.png" alt /></div>
+                                            <div style={{ cursor: 'pointer' }}><img src="./assets/images/landing/check-list_icon2.png" alt /></div> */}
                                             <div style={{ cursor: 'pointer' }} onClick={() => deleteTour(tour.tour_id)}><img src="./assets/images/landing/remove_icon.png" alt /></div>
                                         </td>
                                     </tr>
